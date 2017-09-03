@@ -1,5 +1,6 @@
 '''The terminal based user interface'''
 from src.play import *
+from src.card import VALUES
 from pyfiglet import Figlet
 class UserInterface():
     '''User interface instance'''
@@ -24,6 +25,10 @@ class UserInterface():
                 return self.parse_card(res)
             except ValueError:
                 print('I don\'t know that card please enter 2-10, A, J, Q, or K')
+    def ask_for_card(self, request, opponent):
+        '''Ask the user for a card'''
+        self.ask_boolean('Do you have any %ss' % VALUES[request.value])
+        print('Need to flesh out the player class to continue here')
     def parse_card(self, res):
         '''parse the user's response to a card to fish for'''
         #first make sure the response was only one character
