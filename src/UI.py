@@ -14,7 +14,18 @@ class UserInterface():
             self.tutorial()
     def tutorial(self):
         '''print out the instructions for the user'''
-        print('The instructions will go here eventually')
+        print('-------------------------------------------------------------INSTRUCTIONS--------------------------------------------------------------------------------')
+        print('Each Player is dealt 7 cards to start, from random, from a 52 card deck.')
+        print('The rest of the cards are left in the deck or what is referred to as the "ocean" or "pool".')
+        print('On the Players turn, the Player asks the other Player for a specific Face Value. Such as "7" or "K".')
+        print('If the other player has that card, the Current Player takes all cards of that face value and adds it to a "Book"')
+        print('A "Book" is a grouping of like cards. For example: Hearts 7, Diamonds 7, Spades 7, Clovers 7')
+        print('A "Book" is complete when all for like cards are added. It is then placed face up and removed from Players hand.')
+        print('If the other Player does not have the card asked for, they then say, "Go-fish". The Current Player then adds another card to their hand from the "Ocean".')
+        print('The Players turn is then over and the next Player then plays.')
+        print('When all cards have been added to a "Book" and there are no more cards left, the game ends.')
+        print('The player with the most face up "Books" then wins.')
+
     def request_fish(self):
         '''request a card to fish for from the user'''
         while True:

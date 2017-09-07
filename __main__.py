@@ -16,5 +16,6 @@ def main():
         ui.print_player_hand(g.player1.hand)
         ui.print_books(g.player1.books, g.player2.books)
     ui.print_winner(g.tally_scores())
+
 if __name__ == '__main__':
     main()
