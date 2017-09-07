@@ -3,16 +3,14 @@ from src.book import Book
 
 class Player():
     '''A player in the game GoFish'''
-    def __init__(self):
+    def __init__(self, name):
         self.hand = list()
         self.books = list()
+        self.name = name
     def accept_card(self, card):
         '''accept a card from the deck or opponent, this checks for any valid books'''
-        try:
-            last_matching = list(map(lambda card: card.value, self.hand)).index(card.value)
-            self.hand.insert(last_matching + 1, card)
-        except ValueError:
-            self.hand.append(card)
+        self.hand.append(card)
+        self.hand.sort(key=lambda card: card.value)
         self.check_for_books()
     def check_for_books(self):
         '''check the current hand for any possible books'''
@@ -25,14 +23,18 @@ class Player():
             except KeyError:
                 new_book = Book()
                 new_book.add(card)
+                possible_books[card.value] = new_book
         complete_books = filter(lambda book: book.is_complete(),\
         list(possible_books.values()))
         self.books.extend(complete_books)
         incomplete_books = filter(lambda book: not book.is_complete(), \
         list(possible_books.values()))
-        self.hand = list(map(lambda book: book.cards, incomplete_books))
+        for book in incomplete_books:
+            self.hand.extend(book.cards)
     def give_cards(self, value):
         '''Return any cards with a matching value and remove them from the player's hand'''
         ret = list(filter(lambda card: card.value == value, self.hand))
         self.hand = list(filter(lambda card: card.value != value, self.hand))
         return ret
+    def printable_hand(self):
+        return str(map(lambda card: card.__str__(), self.hand))
