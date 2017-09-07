@@ -1,14 +1,12 @@
 '''An action in this game'''
-class Request():
-    '''A request for a cards'''
+class Play():
+    '''One player's turn in game'''
     def __init__(self, number):
-        self.card = number
-        self.response = None
-    def respond(self, response):
-        '''Add the response object to the request'''
-        self.response = response
-class Response():
-    '''The player's response to a request'''
-    def __init__(self, positive, cards):
-        self.positive = positive
-        self.cards = cards
+        self.requested_value = number
+        self.cards_from_opponent = None
+        self.drawn_card = None
+        self.bonus_card = None
+        self.empty_deck = False
+        self.empty_hand = False
+    def was_successful(self):
+        return len(self.cards_from_opponent) > 0

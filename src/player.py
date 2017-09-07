@@ -10,8 +10,10 @@ class Player():
     def accept_card(self, card):
         '''accept a card from the deck or opponent, this checks for any valid books'''
         self.hand.append(card)
-        self.hand.sort(key=lambda card: card.value)
         self.check_for_books()
+    def accept_cards(self, cards):
+        for card in cards:
+            self.accept_card(card)
     def check_for_books(self):
         '''check the current hand for any possible books'''
         possible_books = dict()
@@ -31,6 +33,7 @@ class Player():
         list(possible_books.values()))
         for book in incomplete_books:
             self.hand.extend(book.cards)
+        self.hand.sort(key=lambda card: card.value)
     def give_cards(self, value):
         '''Return any cards with a matching value and remove them from the player's hand'''
         ret = list(filter(lambda card: card.value == value, self.hand))
