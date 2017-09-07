@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+<<<<<<< HEAD
       <module fileurl="file://$PROJECT_DIR$/.idea/GoFish.iml" filepath="$PROJECT_DIR$/.idea/GoFish.iml" />
+=======
+      <module fileurl="file://$PROJECT_DIR$/.idea/MCTC.Capstone.Week2.GoFish.iml" filepath="$PROJECT_DIR$/.idea/MCTC.Capstone.Week2.GoFish.iml" />
+>>>>>>> Game
     </modules>
   </component>
 </project>
