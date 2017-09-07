@@ -11,13 +11,15 @@
 
   Python 3 is required
 
+```
     git clone https://github.com/FreeMasen/MCTC.Capstone.Week2.GoFish
     cd MCTC.Capstone.Week2.GoFish
     pip3 install pyfiglet
+```
 
   Once these commands are run, you can play the game by running the following command:
 
-    python main.py
+    ```python __main__.py```
 
 # Authors
 
