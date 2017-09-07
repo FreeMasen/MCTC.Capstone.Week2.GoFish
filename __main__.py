@@ -1,11 +1,8 @@
 '''Main Go Fish module'''
 from src.UI import UserInterface
 from src.game import Game
-from src.deck import Deck
 def main():
     '''The main entry point for the game Go Fish'''
-    d = Deck()
-
     ui = UserInterface()
     g = Game()
     ui.welcome()
