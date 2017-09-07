@@ -1,5 +1,7 @@
 '''Card'''
 SUITS = ['Clubs', 'Spades', 'Hearts', 'Diamonds']
+SYMBOLS = ['♣', '♠', '♥', '♦']
+VALUES = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K']
 class Card():
     '''1 standard playing card'''
     def __init__(self, suit, number):
@@ -7,20 +9,15 @@ class Card():
         self.suit = suit
     def get_value(self):
         '''Get the str representation of this card's value'''
-        if self.value == 0:
-            return 'A'
-        if self.value < 10:
-            return str(self.value + 1)
-        if self.value == 10:
-            return 'J'
-        if self.value == 11:
-            return 'Q'
-        if self.value == 12:
-            return 'K'
+        return VALUES[self.value]
     def get_suit(self):
         '''Get the string representation of this card's suit'''
         return SUITS[self.suit]
     def __str__(self):
-        return '%s %s' % (self.get_suit(), self.get_value())
+        if self.value != 9:
+            value = ' %s' % self.get_value()
+        else:
+            value = '%s' % self.get_value()
+        return '┌────┐\n|  %s |\n| %s |\n└────┘' % (SYMBOLS[self.suit], value)
     def __repr__(self):
         return self.__str__()
