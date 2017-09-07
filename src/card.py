@@ -18,6 +18,6 @@ class Card():
             value = ' %s' % self.get_value()
         else:
             value = '%s' % self.get_value()
-        return '┌────┐\n|  %s |\n| %s |\n└────┘' % (SYMBOLS[self.suit], value)
+        return '┌────┐\n│  %s │\n│ %s │\n└────┘' % (SYMBOLS[self.suit], value)
     def __repr__(self):
         return self.__str__()
