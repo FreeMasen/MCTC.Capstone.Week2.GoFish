@@ -11,7 +11,7 @@ class Book():
             if not self.cards[0].value == card.value:
                 raise ValueError('A book can only contain cards of the same value %s is not %s' \
                 % (self.cards[0].get_value(), card.get_value()))
-        if cards_length > 3:
+        if cards_length > 4:
             raise ValueError('A book cannot contain more than 4 cards')
         self.cards.append(card)
     def is_complete(self):
