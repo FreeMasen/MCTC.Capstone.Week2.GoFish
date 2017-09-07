@@ -1,39 +1,24 @@
 '''Game of Go Fish'''
 from src.deck import Deck
-deck = Deck()
+from src.player import Player
 class Game():
     '''The main service that administers the rules of the game Go Fish'''
     def __init__(self):
-        '''pass'''
-
-    #gets a starting hand of 7 for player
-    def get_player_hand(self):
-        playerHand = list()
-        for i in range(0, 7):
-            playerHand.append(deck.get_card())
-        return playerHand
-
-    #asks for face value.
-    #TODO: add importance to method. Does nothing except ask for now
-    def ask_face_value(self):
-        faceVal = int(input('Do you have a ' ))
-        if faceVal < 1 or faceVal > 13:
-            print("Please enter in a whole number from 1 to 13")
-        else:
-            pass
-
-    #defines a main method? move to Main?
-    def main(self):
-
-        player1Hand = list(Game.get_player_hand(Game))
-        player2Hand = list(Game.get_player_hand(Game))
-        print(player1Hand)
-        print(player2Hand)
-        Game.ask_face_value(Game)
-
-
-       #for c in range(0, deck.cards.__len__()):
-                #print(deck.get_card())
-#calls main method
-if __name__ == '__main__':
-    Game.main(Game)
+        self.player1 = Player()
+        self.player2 = Player()
+        self.deck = Deck()
+    def deal(self, player):
+        '''populates player hand's'''
+        for i in range(7):
+            for j in range(2):
+                if j % 2 == 0:
+                    self.player1.accept_card(self.deck.get_card())
+                else:
+                    self.player2.accept_card(self.deck.get_card())
+    def check_for_card(self, value, player1):
+        '''check if oppoenent has any cards of that value and transfer if they exist'''
+        from_player = self.player1 if player1 else self.player2
+        cards_to_transfer = from_player.give_cards(value)
+        to_player = self.player2 if player1 else self.player1
+        for card in cards_to_transfer:
+            to_player.accept_card(card)
