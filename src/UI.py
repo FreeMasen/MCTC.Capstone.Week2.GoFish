@@ -1,5 +1,5 @@
 '''The terminal based user interface'''
-from src.card import VALUES
+from src.card import *
 from pyfiglet import Figlet
 class UserInterface():
     '''User interface instance'''
@@ -14,14 +14,23 @@ class UserInterface():
             self.tutorial()
     def tutorial(self):
         '''print out the instructions for the user'''
-        print('-------------------------------------------------------------INSTRUCTIONS--------------------------------------------------------------------------------')
-        print('Each Player is dealt 7 cards to start, from random, from a 52 card deck.')
-        print('The rest of the cards are left in the deck or what is referred to as the "ocean" or "pool".')
-        print('On the Players turn, the Player asks the other Player for a specific Face Value. Such as "7" or "K".')
-        print('If the other player has that card, the Current Player takes all cards of that face value and adds it to a "Book"')
-        print('A "Book" is a grouping of like cards. For example: Hearts 7, Diamonds 7, Spades 7, Clovers 7')
-        print('A "Book" is complete when all for like cards are added. It is then placed face up and removed from Players hand.')
-        print('If the other Player does not have the card asked for, they then say, "Go-fish". The Current Player then adds another card to their hand from the "Ocean".')
+        print('INSTRUCTIONS'.center(43, '-'))
+        print('Each Player is dealt 7 cards to start.')
+        print('The rest of the cards are left in the deck')
+        print('or what is referred to as the "ocean" or "pool".')
+        print('Each turn a player asks for a card\'s face value.')
+        print('i.e. "Do you have any 7s?"')
+        print('If the other player has any of that card,')
+        print('he/she must give all of them to their opponent')
+        print('The asker then places these cards into "books"')
+        print('A "Book" is a grouping of like cards. For example:')
+        self.print_list_of_cards([Card(0,6), Card(1,6), Card(2,6), Card(3,6)])
+        print('A "Book" is complete when all for like cards are added.')
+        print('It is then placed face up and removed from Players hand.')
+        print('If the other Player does not have any of the card asked for,')
+        print('he/she then says, "Go-fish". The asker draws a card from the "Ocean".')
+        print('If the card drawn matches what the player asked for,')
+        print('he/she gets to draw a bonus card.')
         print('The Players turn is then over and the next Player then plays.')
         print('When all cards have been added to a "Book" and there are no more cards left, the game ends.')
         print('The player with the most face up "Books" then wins.')
@@ -109,6 +118,9 @@ class UserInterface():
         '''ask the user a yes or no question getting a boolean as the response'''
         while True:
             res = input(question + '\n')
+            if res == '':
+                print('Please enter y or n')
+                continue
             if res[0].lower() == 'y':
                 return True
             if res[0].lower() == 'n':
@@ -132,5 +144,6 @@ class UserInterface():
         for i in range(max_height):
             for card_string in card_strings:
                 ret += card_string.split('\n')[i]
-            ret += '\n'
+            if i < max_height - 1:
+                ret += '\n'
         print(ret)
