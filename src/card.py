@@ -14,6 +14,12 @@ class Card():
         '''Get the string representation of this card's suit'''
         return SUITS[self.suit]
     def __str__(self):
+        #┌────┐
+        #│  ♣ │
+        #│  7 │
+        #└────┘
+        #prints an ascii image as above with the correct
+        #value and suit
         if self.value != 9:
             value = ' %s' % self.get_value()
         else:
